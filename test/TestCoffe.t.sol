@@ -79,11 +79,11 @@ contract TestCoffe is Test {
         assertEq(coffeCoin.totalSupply(), 0);
         assertEq(coffeCoin.balanceOf(MINTER1), 0);
         assertEq(coffeCoin.balanceOf(MINTER2), 0);
+
         coffeDrop.airdropERC20token();
-        uint256 totalSuppy = coffeCoin.totalSupply();
-        console.log(totalSuppy);
-        assert(coffeCoin.totalSupply() > 0);
-        assert(coffeCoin.balanceOf(MINTER1) > 0);
-        assert(coffeCoin.balanceOf(MINTER2) > 0);
+
+        assert(coffeCoin.totalSupply() == (amountERC20toMint * mintAmount1) + (amountERC20toMint * mintAmount2));
+        assert(coffeCoin.balanceOf(MINTER1) == amountERC20toMint * mintAmount1);
+        assert(coffeCoin.balanceOf(MINTER2) == amountERC20toMint * mintAmount2);
     }
 }
